@@ -1,0 +1,74 @@
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+
+v1 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+def vector_rearranger(v1):
+  v_new = []
+  #return v_change
+  #print(v_change)
+  for i in v1:
+    #for thing in v_change:
+      v_new.append(i+np.random.randint(-1,1))
+  #return v_new
+  return(v_new)
+
+
+#print(vector_rearranger(v1))
+
+#Advanced Version
+v0 = np.array([1, 1, 1, 1])
+def make_mutations(v0):
+  mutations = np.random.randint(-1, 2, size = 4)
+  v_f = v0 + mutations
+  return v_f
+v_f = 0
+#print(v_f)
+def asexual():
+  for _ in range(5):
+     v_f = make_mutations(v_f)
+     print(v_f)
+
+#Big Evolution Model
+
+v1 = np.array([0, 0, 0, 0])
+v2 = np.array([0, 0, 0, 0])
+v3 = np.array([0, 0, 0, 0])
+v4 = np.array([0, 0, 0, 0])
+
+def sexy_times(v1, v2, v3, v4):
+  v_interm_a = (v1 + v2)/2
+  v_a_mutation_new = np.random.randint(-5, 10, size = 4)
+  v1_mutate = np.random.randint(-1, 2, size = 4)
+  v2_mutate = np.random.randint(-1, 2, size = 4)
+  v1_f = v_interm_a + v_a_mutation_new + v1_mutate
+  v2_f = v_interm_a + v_a_mutation_new + v2_mutate
+
+  v_interm_b = (v3 + v4)/2
+  v_b_mutation_new = np.random.randint(-5, 10, size = 4)
+  v3_mutate = np.random.randint(-1, 2, size = 4)
+  v4_mutate = np.random.randint(-1, 2, size = 4)
+  v3_f = v_interm_b + v_b_mutation_new + v3_mutate
+  v4_f = v_interm_b + v_b_mutation_new + v4_mutate
+
+  return v1_f, v2_f, v3_f, v4_f
+
+# Makes the generations appear clean and easy to see
+def big_evolution(v1, v2, v3, v4):
+    for gen in range(1, 6):
+
+        v1, v2, v3, v4 = sexy_times(v1, v2, v3, v4)
+        distance_a = np.linalg.norm(v1 - v4)
+        distance_b = np.linalg.norm(v3 - v2)
+    
+        print(f"=== GENERATION {gen} ===")
+        print(f"Lineage A (v1, v2): {v1} {v2}")
+        print(f"Lineage B (v3, v4): {v3} {v4}")
+        print(f"Distance A: {distance_a}")
+        print(f"Distance B: {distance_b}")
+        print("\n")
+
+# Run the simulation
+big_evolution(v1, v2, v3, v4)
