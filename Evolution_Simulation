@@ -38,7 +38,7 @@ v2 = np.array([0, 0, 0, 0])
 v3 = np.array([0, 0, 0, 0])
 v4 = np.array([0, 0, 0, 0])
 
-def sexy_times(v1, v2, v3, v4):
+def reproduction_math(v1, v2, v3, v4):
   v_interm_a = (v1 + v2)/2
   v_a_mutation_new = np.random.randint(-5, 10, size = 4)
   v1_mutate = np.random.randint(-1, 2, size = 4)
@@ -59,7 +59,7 @@ def sexy_times(v1, v2, v3, v4):
 def big_evolution(v1, v2, v3, v4):
     for gen in range(1, 6):
 
-        v1, v2, v3, v4 = sexy_times(v1, v2, v3, v4)
+        v1, v2, v3, v4 = reproduction_math(v1, v2, v3, v4)
         distance_a = np.linalg.norm(v1 - v4)
         distance_b = np.linalg.norm(v3 - v2)
     
